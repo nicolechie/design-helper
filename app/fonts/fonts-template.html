@@ -1,0 +1,23 @@
+<form name="headerFonts" class="form-inline">
+		
+	<label for="serifSelect">Serif Fonts</label>
+	<select name="serifSelect" class="form-control {{ fontFamily }}" ng-model="thisSerifFont" ng-options="serif.family for serif in serifs" ng-change="loadHeaderFont(thisSerifFont)"> 
+	</select>
+
+	<label for="sansSerifSelect">Sans Serif Fonts</label>
+	<select name="sansSerifSelect" class="form-control {{ fontFamily }}" ng-model="thisSansSerifFont" ng-options="sansSerif.family for sansSerif in sansSerifs" ng-change="loadHeaderFont(thisSansSerifFont);">
+	</select>
+				
+</form>
+
+<!-- <form name="paragraphFonts" class="form-inline">
+		
+	<label for="serifSelect">Serif Fonts</label>
+	<select name="serifSelect" class="form-control {{ fontFamily }}" ng-model="thisSerifFont" ng-options="serif.family for serif in serifs" ng-change="loadParagraphFont(thisSerifFont)"> 
+	</select>
+
+	<label for="sansSerifSelect">Sans Serif Fonts</label>
+	<select name="sansSerifSelect" class="form-control {{ fontFamily }}" ng-model="thisSansSerifFont" ng-options="sansSerif.family for sansSerif in sansSerifs" ng-change="loadParagraphFont(thisSansSerifFont);">
+	</select>
+				
+</form> -->
