@@ -1,23 +1,27 @@
-<form name="headerFonts" class="form-inline">
-		
-	<label for="serifSelect">Serif Fonts</label>
-	<select name="serifSelect" class="form-control {{ fontFamily }}" ng-model="thisSerifFont" ng-options="serif.family for serif in serifs" ng-change="loadHeaderFont(thisSerifFont)"> 
-	</select>
+<div class="btn-group" ng-model="button.radio" bs-radio-group>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="setHeaderFilter('sans-serif')" value="0">Sans Serif</label>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="setHeaderFilter('serif')" value="1">Serif</label>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="setHeaderFilter('! ')" value="2">All Fonts</label>
+</div>
 
-	<label for="sansSerifSelect">Sans Serif Fonts</label>
-	<select name="sansSerifSelect" class="form-control {{ fontFamily }}" ng-model="thisSansSerifFont" ng-options="sansSerif.family for sansSerif in sansSerifs" ng-change="loadHeaderFont(thisSansSerifFont);">
-	</select>
+
+<form name="headerFonts" class="form-inline">
+	
+	<select name="headerFontSelect" class="form-control {{ headerFontFamily }}" ng-model="thisHeaderFont" ng-options="font.family for font in headerFontsList" ng-change="loadHeaderFont(thisHeaderFont)"> 
+	</select>	
 				
 </form>
 
-<!-- <form name="paragraphFonts" class="form-inline">
-		
-	<label for="serifSelect">Serif Fonts</label>
-	<select name="serifSelect" class="form-control {{ fontFamily }}" ng-model="thisSerifFont" ng-options="serif.family for serif in serifs" ng-change="loadParagraphFont(thisSerifFont)"> 
-	</select>
+<div class="btn-group" ng-model="button.paragraphRadio" bs-radio-group>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="setParagraphFilter('sans-serif')" value="0">Sans Serif</label>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="setParagraphFilter('serif')" value="1">Serif</label>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="setParagraphFilter('! ')" value="2">All Fonts</label>
+</div>
 
-	<label for="sansSerifSelect">Sans Serif Fonts</label>
-	<select name="sansSerifSelect" class="form-control {{ fontFamily }}" ng-model="thisSansSerifFont" ng-options="sansSerif.family for sansSerif in sansSerifs" ng-change="loadParagraphFont(thisSansSerifFont);">
-	</select>
+
+<form name="paragraphFonts" class="form-inline">
+	
+	<select name="paragraphFontSelect" class="form-control {{ paragraphFontFamily }}" ng-model="thisParagraphFont" ng-options="font.family for font in paragraphFontsList" ng-change="loadParagraphFont(thisParagraphFont)"> 
+	</select>	
 				
-</form> -->
+</form>
