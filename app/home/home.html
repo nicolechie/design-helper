@@ -1,0 +1,33 @@
+<div class = "col-md-3 asideContent fullHeight" ng-show="editMode">
+				
+				<font-dropdown>
+				</font-dropdown>
+
+         	</div>
+         	<div class = "col-md-1">
+               
+        			<span ng-show="!editMode" ng-click="editMode=true"> <i class="fa fa-bars fa-2x icon" aria-hidden="true"></i></span>
+      			            	
+        	 </div>
+
+       		<div class="marginTop20 fullHeight" ng-class="{'col-md-7': editMode, 'col-md-10': !editMode}" ng-click="editMode=false">
+				
+				<h1 class = "header {{ forHeaderCSS }} text-center" ng-style="{'font-size': thisHeaderSize,'color': selected}" make-editable>Header {{headerFontFamily}}
+				</h1>
+				<div class = "paragraph {{ forParagraphCSS }}" ng-style="{'font-size': thisParagraphSize}" make-editable>
+					<p>{{paragraphFontFamily}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus dicta nam cupiditate obcaecati! Nisi consequatur sapiente voluptatem consequuntur iusto unde nostrum porro, nesciunt fuga vel, dignissimos similique et maxime voluptatum. 
+
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odio ut atque amet, cumque cum non, expedita deleniti, aliquam nobis magnam. 
+					</p>
+					<p>{{paragraphFontFamily}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus dicta nam cupiditate obcaecati! Nisi consequatur sapiente voluptatem consequuntur iusto unde nostrum porro, nesciunt fuga vel, dignissimos similique et maxime voluptatum. 
+
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odio ut atque amet, cumque cum non, expedita deleniti, aliquam nobis magnam. Doloremque dolorum aliquid architecto facere optio ratione corrupti, sed. 
+
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt commodi nisi, cupiditate distinctio fugit, culpa ab similique obcaecati, enim iusto facere eligendi porro omnis esse ducimus tempora dolor? Illo, eveniet?
+					</p>
+
+					<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+					</p>
+					
+				</div>
+			</div>

@@ -1,41 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="dhApp" ng-controller = "FontCtrl">
+<html lang="en" ng-app="dhApp" ng-controller = "HomeCtrl">
 <head>
 	<meta charset="UTF-8">
 	<title>Directive Test</title>
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="bower_components/angular-route/angular-route.min.js"></script>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="bower_components/bootstrap-additions/dist/bootstrap-additions.min.css">
-	<script src="./app.js"></script>
 	<link id="base-style-responsive" ng-href= {{style1}} rel="stylesheet" type='text/css'>
 	<link id="base-style-responsive" ng-href= {{style2}} rel="stylesheet" type='text/css'>
 	<link rel="stylesheet" href="./main.css">
+	<script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+	<script src="https://use.fontawesome.com/992aab0a77.js"></script>
+	<!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/ngjs-color-picker/css/ngjs-color-picker.css" rel="stylesheet">
+	<script src="./app.js"></script>
+	<script src="./home/home.controller.js"></script>
+	<script type="text/javascript" src="bower_components/ngjs-color-picker/js/ngjs-color-picker.js"></script>
+	
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-3">
-				<font-dropdown>
-				</font-dropdown>
-			</div>
-			<div class="col-md-9">
+		<div class="row fullHeight">
+			
+			<div ng-view></div>
 
-				<h1 class = "header{{ forHeaderCSS }} text-center" make-editable>Header {{headerFontFamily}}
-				</h1>
-				<p class = "paragraph{{ forParagraphCSS }}" make-editable>{{paragraphFontFamily}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus dicta nam cupiditate obcaecati! Nisi consequatur sapiente voluptatem consequuntur iusto unde nostrum porro, nesciunt fuga vel, dignissimos similique et maxime voluptatum. 
-
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odio ut atque amet, cumque cum non, expedita deleniti, aliquam nobis magnam. Doloremque dolorum aliquid architecto facere optio ratione corrupti, sed. 
-
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt commodi nisi, cupiditate distinctio fugit, culpa ab similique obcaecati, enim iusto facere eligendi porro omnis esse ducimus tempora dolor? Illo, eveniet?
-				</p>
-			</div>
 		</div>
 	</div>
+
 	<script type="text/javascript" src="createCSSSelector.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
 	<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
 	<script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
 </body>
 </html>
+
+
 
