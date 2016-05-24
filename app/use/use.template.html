@@ -1,20 +1,24 @@
 <div ng-controller="UseCtrl" class="col-md-10 col-md-offset-1">
-	<h1>Paste this into your head</h1>
+	<h2>Paste this into your head</h2>
 
 	<pre>
 		{{ headerLink }}
 		{{ paragraphLink }}
 	</pre>
 
-	<h2>Paste this into your CSS</h2>
+	<h2>Paste this into your CSS and integrate classes into HTML</h2>
+
 	<pre>
-		{{ headerStyle }}
-		{{ paragraphStyle }}
+		.header {
+			font-family: '{{ chosenHeader.font.family }}';
+			font-size: {{ chosenHeader.size }};
+			color: {{ chosenHeader.color }};
+		}
+
+		.paragraph {
+			font-family: '{{ chosenParagraph.font.family }}';
+			font-size: {{ chosenParagraph.size }};
+		}
 	</pre>
 
-	<h2>and this into your HTML</h2>
-	<pre>
-		{{ headerStyleTag }}
-		{{ paragraphStyleTag }}
-	</pre>
 </div>

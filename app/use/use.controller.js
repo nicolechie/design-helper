@@ -1,9 +1,12 @@
-app.controller('UseCtrl', ['getFonts', '$scope', '$rootScope', '$filter', function(getFonts, $scope, $rootScope, $filter){
+app.controller('UseCtrl', ['chosenFonts', '$scope', '$rootScope', function(chosenFonts, $scope, $rootScope){
+	$scope.chosenHeader = chosenFonts.list()[0];
+	$scope.chosenParagraph = chosenFonts.list()[1];
+	// $scope.chosenHeaderCSS = chosenFonts.list()[0].font.forCSS;
+	// $scope.chosenHeaderFamily = chosenFonts.list()[0].font.family;
+	// $scope.chosenHeaderSize = chosenFonts.list()[0].size;
+	// $scope.chosenParagraphCSS = chosenFonts.list()[1].font.forCSS;
+	// $scope.chosenParagraphFamily = chosenFonts.list()[1].font.family;
+	// $scope.chosenParagraphSize = chosenFonts.list()[1].size;
 	$scope.headerLink = "<link href='" + $rootScope.style1 + "' rel='stylesheet' type='text/css'>"
-	$scope.headerStyle = "." + $scope.forHeaderCSS + " {font-family: '" + $scope.headerFontFamily + "'};"
-	$scope.headerStyleTag = "<h1 class = '" + $scope.forHeaderCSS + "'>";
-
 	$scope.paragraphLink = "<link href='" + $rootScope.style2 + "' rel='stylesheet' type='text/css'>"
-	$scope.paragraphStyle = "." + $scope.forParagraphCSS + " {font-family: '" + $scope.paragraphFontFamily + "'};"
-	$scope.paragraphStyleTag = "<p class = '" + $scope.forParagraphCSS + "'>";
 }]);

@@ -29,8 +29,41 @@ app
 	      return dhRequest(params);
 	    };
 	}]) 
+	.factory('chosenFonts', [function() {
+		var chosenFonts = [];
+	    return {
+	    	push: function(font) {
+	    		chosenFonts.push(font);
+	    	},
+	    	list: function() {
+	    		return chosenFonts;
+	    	}
+	    };
+	}])
+	// .factory('sortFonts', ['getFonts', function(getFonts) {
+	// 	var allHeaderFonts = [];
+	// 	var allParagraphFonts = [];
+	// 	return function sortFonts(fonts) {
+	// 	  		for (i=0; i<=100; i++) {
+	// 				var forLink = fonts[i].family.replace(/ /g, '+');
+	// 				var forCSS = fonts[i].family.replace(/ /g, '');
+	// 				allHeaderFonts.push({category: fonts[i].category, family: fonts[i].family, forLink: forLink, forCSS: forCSS});
+	// 				allParagraphFonts.push({category: fonts[i].category, family: fonts[i].family, forLink: forLink, forCSS: forCSS});
+	// 			};
+	// 			return (allHeaderFonts);
+	//   	}
+	// }]) 
+	// .factory('loadFonts', ['sortFonts', function(sortFonts) {
+	// 	return function loadHeaderFont(thisHeaderFont) {
+	// 	  	var fontLink = thisHeaderFont.forLink;
+	// 	  	var headerFontFamily = thisHeaderFont.family;
+	// 	  	var forHeaderCSS = thisHeaderFont.forCSS;
+	// 	  	addHeaderFont(fontLink);
+	// 	  	createCSSSelector("." + forHeaderCSS, "font-family: '" + headerFontFamily + "'");
+	//   	}
+	// }]) 
 
-app.directive('fontDropdown', function() {
+app.directive('sidebarMenu', function() {
 	return {
 		restrict: 'E',
 		templateUrl: 'home/sidebar.template.html',

@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', function(getFonts, $scope, $rootScope, $filter){
+app.controller('HomeCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope', '$filter', function(getFonts, chosenFonts, $scope, $rootScope, $filter){
 		$scope.newColors = [
 			'#000000',
 	        '#468966',
@@ -19,9 +19,7 @@ app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', funct
 		$scope.loadHeaderFont = loadHeaderFont;
 		function addHeaderFont(fontLink) {
 			$rootScope.style1 = 'https://fonts.googleapis.com/css?family=' + fontLink;
-			$scope.headerLink = "<link href='" + $rootScope.style1 + "' rel='stylesheet' type='text/css'>"
 		}
-
 
 		function addParagraphFont(fontLink) {
 			$rootScope.style2 = 'https://fonts.googleapis.com/css?family=' + fontLink;
@@ -50,7 +48,6 @@ app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', funct
 	  	}
 
 	  	function loadHeaderFont(thisHeaderFont) {
-	   		console.log('calling function', thisHeaderFont);
 		  	var fontLink = thisHeaderFont.forLink;
 		  	$scope.headerFontFamily = thisHeaderFont.family;
 		  	$scope.forHeaderCSS = thisHeaderFont.forCSS;
@@ -59,12 +56,13 @@ app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', funct
 	  	}
 
 	  	function loadParagraphFont(thisParagraphFont) {
-	   		console.log('calling function', thisParagraphFont);
+	   		console.log('calling loadParagraphFont function', thisParagraphFont);
 		  	var fontLink = thisParagraphFont.forLink;
 		  	$scope.paragraphFontFamily = thisParagraphFont.family;
 		  	$scope.forParagraphCSS = thisParagraphFont.forCSS;
 		  	addParagraphFont(fontLink);
 		  	createCSSSelector("." + $scope.forParagraphCSS, "font-family: '" + $scope.paragraphFontFamily + "'");
+	  		console.log("forParagraphCSS", $scope.forParagraphCSS);
 	  	}
 
 	  	$scope.button = {
@@ -93,7 +91,14 @@ app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', funct
 		$scope.customOptions = {
 			roundCorners: true
 		};
- 
+
+		function generate() {
+			chosenFonts.push({font: $scope.thisHeaderFont, size: $scope.thisHeaderSize, color: $scope.selected});
+			chosenFonts.push({font: $scope.thisParagraphFont, size: $scope.thisParagraphSize});
+		}
+
+		$scope.generate = generate;
+
         getFonts()
 		  	.then(function(data, status, headers, config) {
 		        var fonts = data.data.items;
@@ -113,5 +118,6 @@ app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', funct
 
 		 		getHeaderSizes();
 		 		getParagraphSizes();
+	
 		  })
 }]);
