@@ -19,7 +19,9 @@ app.controller('HomeCtrl', ['getFonts', '$scope', '$rootScope', '$filter', funct
 		$scope.loadHeaderFont = loadHeaderFont;
 		function addHeaderFont(fontLink) {
 			$rootScope.style1 = 'https://fonts.googleapis.com/css?family=' + fontLink;
+			$scope.headerLink = "<link href='" + $rootScope.style1 + "' rel='stylesheet' type='text/css'>"
 		}
+
 
 		function addParagraphFont(fontLink) {
 			$rootScope.style2 = 'https://fonts.googleapis.com/css?family=' + fontLink;
