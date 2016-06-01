@@ -1,4 +1,4 @@
-var app = angular.module('dhApp', ['mgcrea.ngStrap', 'mgcrea.ngStrap.button', 'ngAnimate', 'ngjsColorPicker', 'ngRoute']);
+var app = angular.module('dhApp', ['dhApp.home', 'mgcrea.ngStrap', 'mgcrea.ngStrap.button', 'ngjsColorPicker', 'ngRoute']);
 app
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
     	// $locationProvider.html5Mode(true);

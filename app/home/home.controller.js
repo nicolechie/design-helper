@@ -1,3 +1,4 @@
+var app = angular.module('dhApp.home', []);
 app.controller('HomeCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope', '$filter', function(getFonts, chosenFonts, $scope, $rootScope, $filter){
 		$scope.newColors = [
 			'#000000',
@@ -25,9 +26,11 @@ app.controller('HomeCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope', '
 			$rootScope.style2 = 'https://fonts.googleapis.com/css?family=' + fontLink;
 		}
 
+		$scope.sortFonts = sortFonts;
 	  	function sortFonts(fonts) {
 	  		for (i=0; i<=100; i++) {
 				var forLink = fonts[i].family.replace(/ /g, '+');
+				$scope.forLink = forLink;
 				var forCSS = fonts[i].family.replace(/ /g, '');
 				allHeaderFonts.push({category: fonts[i].category, family: fonts[i].family, forLink: forLink, forCSS: forCSS});
 				allParagraphFonts.push({category: fonts[i].category, family: fonts[i].family, forLink: forLink, forCSS: forCSS});
@@ -78,7 +81,7 @@ app.controller('HomeCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope', '
 			}
 			$scope.thisHeaderSize = headerSizes[1];
 		}
-
+		$scope.getParagraphSizes = getParagraphSizes;
 		function getParagraphSizes() {
 			var paragraphSizes = [];
 			$scope.paragraphSizes = paragraphSizes;

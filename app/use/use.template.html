@@ -1,24 +1,31 @@
-<div ng-controller="UseCtrl" class="col-md-10 col-md-offset-1">
-	<h2>Paste this into your head</h2>
+<div ng-controller="UseCtrl" class="col-md-10 col-md-offset-1 marginTop20">
+	<h2>Paste this into the head of your HTML Doc:</h2>
 
 	<pre>
 		{{ headerLink }}
-		{{ paragraphLink }}
-	</pre>
+		{{ paragraphLink }}</pre>
 
-	<h2>Paste this into your CSS and integrate classes into HTML</h2>
+	<h2>Paste this into your CSS:</h2>
 
 	<pre>
 		.header {
-			font-family: '{{ chosenHeader.font.family }}';
+			font-family: '{{ chosenHeader.font.family }}', {{ chosenHeader.font.category }};
 			font-size: {{ chosenHeader.size }};
 			color: {{ chosenHeader.color }};
 		}
 
 		.paragraph {
-			font-family: '{{ chosenParagraph.font.family }}';
+			font-family: '{{ chosenParagraph.font.family }}', {{ chosenParagraph.font.category }};
 			font-size: {{ chosenParagraph.size }};
-		}
-	</pre>
+		}</pre>
 
+	<h2>Add paragraph and header classes where you want them:</h2>
+	<pre>
+		&lt;h1 class = "header"&gt;My Header&lt;/h1&gt;
+
+		&lt;p class = "paragraph"&gt;My paragraph text.&lt;/p&gt;</pre>
+
+	<p class="text-center">
+		<a class="btn btn-default" role="button" ng-href="/#/">Start Over</a>
+	</p>
 </div>
