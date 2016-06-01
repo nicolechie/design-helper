@@ -93,26 +93,27 @@ describe("getParagraphSizes", function() {
         });
 });
 // Sort Fonts
-describe("sortFonts", function() {
-       beforeEach(module("dhApp"));
-        var ctrl, scope;
-        beforeEach(inject(function($controller, $rootScope) {
-            scope = $rootScope.$new();
-            scope.fonts = [{category: 'sans-serif', family:'Open Sans'}, 
-                            {category: 'serif', family:'Lora'},
-                            {category: 'sans-serif', family:'Roboto'}];
-            ctrl = $controller('HomeCtrl', {
-                $scope : scope
-            });
-        }));
-    describe("forLink", function() {
+// describe("sortFonts", function() {
+//        beforeEach(module("dhApp"));
+//         var ctrl, scope;
+//         beforeEach(inject(function($controller, $rootScope) {
+//             scope = $rootScope.$new();
+//             scope.fonts = [{category: 'sans-serif', family:'Open Sans'}, 
+//                             {category: 'serif', family:'Lora'},
+//                             {category: 'sans-serif', family:'Roboto'}];
+//             ctrl = $controller('HomeCtrl', {
+//                 $scope : scope
+//             });
+//         }));
+//     describe("forLink", function() {
 
-        it('should replace any spaces from the font with a plus sign', function() {
-            scope.sortFonts(scope.fonts);
-            // expect(scope.forLink).toBe('Open+Sans');
-            });
-        });
-});
+//         it('should replace any spaces from the font with a plus sign', function() {
+//             scope.sortFonts(scope.fonts);
+//             // expect(scope.forLink).toBe('Open+Sans');
+//             });
+//         });
+// });
+
 // Display the color options in a select
 // When a color is chosen, it changes the color of the header font
 // add in new color to array and see if it is added to the options
