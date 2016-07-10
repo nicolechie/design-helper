@@ -1,0 +1,11 @@
+{
+    "production": {
+        "url": "mongodb://localhost/design-helper"
+    },
+    "test": {
+        "url": "mongodb://localhost/design-helper-test"
+    },
+    "development": {
+        "url": "mongodb://localhost/design-helper-dev"
+    }
+}

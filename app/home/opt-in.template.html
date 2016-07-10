@@ -1,0 +1,17 @@
+<section class="row"> 
+ 		<div ng-transclude class="col-md-4 brand-logo">
+ 		</div>
+		<div class="col-md-8">
+			<form name="userForm" ng-submit="createUser()">
+				<input type="text" class="form-control pull-left half input-margin" placeholder="first name" name="firstName" ng-model="user.firstName">
+				<input type="text" class="form-control pull-right half input-margin" placeholder="last name" name="lastName" ng-model="user.lastName">
+				<input type="text" class="form-control input-margin" placeholder="username" name="username" ng-model="user.username">
+				<input type="email" class="form-control input-margin" placeholder="email" name="email" ng-model="user.email">
+				<div class="form-group">	
+					<input type="password" class="form-control" placeholder="password" name="password" ng-model="user.password">
+				</div>
+				
+				 <button type="submit" class="form-control" class="btn btn-default">Sign me up!</button>
+			</form>
+		</div>
+</section>

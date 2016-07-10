@@ -1,14 +1,25 @@
-var app = angular.module('dhApp', ['dhApp.home', 'mgcrea.ngStrap', 'mgcrea.ngStrap.button', 'ngjsColorPicker', 'ngRoute']);
+var app = angular.module('dhApp', ['dhApp.design', 'dhApp.login', 'dhApp.home', 'mgcrea.ngStrap', 'mgcrea.ngStrap.button', 'ngjsColorPicker', 'ngRoute']);
 app
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
-    	// $locationProvider.html5Mode(true);
+    	$locationProvider.html5Mode(true);
         $routeProvider
         .when('/', {
             templateUrl : '/home/home.html',
             controller : 'HomeCtrl'
         })
+        .when('/login', {
+            templateUrl : '/login/login.html',
+            controller : 'LoginCtrl'
+        })
+        .when('/:username/home', {
+    		templateUrl : '/user/user.html'
+    	})
+        .when('/design', {
+            templateUrl : '/design/design.html',
+            controller : 'DesignCtrl'
+        })
         .when('/use', {
-		    templateUrl : '/use/use.template.html',
+		    templateUrl : '/use/use.html',
 		    controller : 'UseCtrl'
 		})
     }])
@@ -40,33 +51,11 @@ app
 	    	}
 	    };
 	}])
-	// .factory('sortFonts', ['getFonts', function(getFonts) {
-	// 	var allHeaderFonts = [];
-	// 	var allParagraphFonts = [];
-	// 	return function sortFonts(fonts) {
-	// 	  		for (i=0; i<=100; i++) {
-	// 				var forLink = fonts[i].family.replace(/ /g, '+');
-	// 				var forCSS = fonts[i].family.replace(/ /g, '');
-	// 				allHeaderFonts.push({category: fonts[i].category, family: fonts[i].family, forLink: forLink, forCSS: forCSS});
-	// 				allParagraphFonts.push({category: fonts[i].category, family: fonts[i].family, forLink: forLink, forCSS: forCSS});
-	// 			};
-	// 			return (allHeaderFonts);
-	//   	}
-	// }]) 
-	// .factory('loadFonts', ['sortFonts', function(sortFonts) {
-	// 	return function loadHeaderFont(thisHeaderFont) {
-	// 	  	var fontLink = thisHeaderFont.forLink;
-	// 	  	var headerFontFamily = thisHeaderFont.family;
-	// 	  	var forHeaderCSS = thisHeaderFont.forCSS;
-	// 	  	addHeaderFont(fontLink);
-	// 	  	createCSSSelector("." + forHeaderCSS, "font-family: '" + headerFontFamily + "'");
-	//   	}
-	// }]) 
 
 app.directive('sidebarMenu', function() {
 	return {
 		restrict: 'E',
-		templateUrl: 'home/sidebar.template.html',
+		templateUrl: 'design/sidebar.template.html',
 		scope: false,
 		// link: function($scope, element, attrs) {
 		
@@ -78,7 +67,16 @@ app.directive('makeEditable', function() {
 	return {
 		restrict: 'A',
 		transclude: true,
-		templateUrl: 'home/editableItemTemplate.html',
+		templateUrl: 'design/make-editable.template.html',
 		scope: true,
     }
 });
+
+// app.directive('optIn', function() {
+//     return {
+//         restrict: 'E',
+//         transclude: true,
+//         templateUrl: 'login/opt-in.template.html',
+//         replace: true
+//     }
+// });

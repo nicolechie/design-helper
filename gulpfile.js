@@ -15,7 +15,7 @@ var paths = {
 // connect
 
 gulp.task('connect', function() { 
-  	connect.server({ root: 'app', livereload: true }); 
+  	connect.server({ root: 'app', port: process.env.PORT, base: 'https://design-helper-nicolechie.c9users.io', livereload: true }); 
 });
 
 gulp.task('html', function () { 
