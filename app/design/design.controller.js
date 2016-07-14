@@ -122,5 +122,14 @@ app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope',
 		 		getHeaderSizes();
 		 		getParagraphSizes();
 	
-		  })
+		  });
 }]);
+
+app.directive('chatBox', function() {
+    return {
+        restrict: 'E',
+        transclude: true,
+        templateUrl: '/design/chat.template.html',
+        replace: true
+    };
+});

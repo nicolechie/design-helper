@@ -21,7 +21,7 @@ app
         .when('/use', {
 		    templateUrl : '/use/use.html',
 		    controller : 'UseCtrl'
-		})
+		});
     }])
 	.constant('DH_API_PREFIX', 'https://www.googleapis.com/webfonts/v1/webfonts?')
 	.constant('DH_API_KEY', 'AIzaSyD0eVESfXT2RIQljAijyf_WpPRpPEeRT6E')

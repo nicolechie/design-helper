@@ -1,9 +1,10 @@
 var app = angular.module('dhApp.home', ['mgcrea.ngStrap', 'mgcrea.ngStrap.modal', 'ngAnimate']);
 
 
-app.controller('HomeCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
+app.controller('HomeCtrl', ['$scope', '$modal', '$http', 'UserInfo', function($scope, $modal, $http, UserInfo){
     
-    // Sign Up
+// Sign Up
+
     var signupModal = $modal({ scope: $scope, templateUrl: "home/signup.html", contentTemplate: false, html: true, show: false });
 
     $scope.showModal = function () {
@@ -22,33 +23,36 @@ app.controller('HomeCtrl', ['$scope', '$modal', '$http', function($scope, $modal
             console.log("Error");
         });
     };
-   
-//   Sign In
-    $scope.userLogin = {};
-    $scope.logIn = function() {
-        console.log($scope.userLogin.username);
-        $http.get('/users')
-        .then(function successCallback(response) {
-            console.log(response.data);
-            response.data.forEach(function(user) {
-                if (user.username === $scope.userLogin.username) {
-                    console.log("username match!", user);
-                    if (user.password === $scope.userLogin.password) {
-                        console.log ("sign in successful");
-                        $scope.signedIn = true;
-                        $scope.firstName = user.firstName;
-                        $scope.username = user.username;
-                    }
-                    else {
-                        console.log("incorrect password");
-                    }
-                }
-            });
-        }, function errorCallback(response) {
+    
+//   Log Out
+
+ $scope.logOut = function() {
+        $http.get('/logout')
+        .then(function (response) {
+            console.log('Success!');
+            $scope.signedIn = false;
+        }, function (response) {
             console.log("Error");
         });
-        
+     };
+   
+//   Log In
+
+    $scope.userLogin = {};
+    $scope.logIn = function() {
+        $http.post('/login', $scope.userLogin)
+        .then(function (response) {
+            console.log(response);
+            console.log('Success!');
+            $scope.signedIn = true;
+            $scope.user = response.data;
+            UserInfo.setData(response.data);
+        }, function (response) {
+              console.log(response);
+            console.log("Error");
+        });
     };
+
 }]);
 
 app.directive('optIn', function() {
@@ -66,5 +70,17 @@ app.directive('navBar', function() {
         transclude: true,
         templateUrl: 'home/navbar.html',
         replace: true
+    };
+});
+
+app.factory('UserInfo', function () {
+    var user = {};
+    return {
+        setData: function (data) {
+            user = data;
+        },
+        getData: function () {
+            return user;
+        }
     }
 });

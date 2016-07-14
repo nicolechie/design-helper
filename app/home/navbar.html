@@ -1,17 +1,18 @@
 <nav class="navbar navbar-default" ng-app = "dhApp.home" ng-controller = "HomeCtrl">
     <div class="container-fluid">
         <div class="navbar-header navbar-right">
-            <form class="navbar-form" ng-hide = "signedIn">
+            <form class="navbar-form" ng-hide = "signedIn" ng-submit="logIn(userLogin)">
             <div class="form-group input-group-sm">
                 <input type="text" class="form-control" placeholder="username" ng-model = "userLogin.username">
             </div>
             <div class="form-group input-group-sm">
                 <input type="password" class="form-control" placeholder="password" ng-model = "userLogin.password">
             </div>
-            <button type="submit" class="btn btn-default btn-sm" ng-click = "logIn()">Sign in</button>
+            <button type="submit" class="btn btn-default btn-sm">Sign in</button>
             </form>
             <p class="navbar-text" ng-show = "signedIn">
-                Welcome back <a href = "/#/{{ username }}/home"> {{ firstName }}! </a>
+                Welcome back <a href = "/#/{{ user.username }}/home"> {{ user.firstName }}! </a>
+                <button class="btn btn-default btn-sm" ng-click = "logOut()">Log out</button>
             </p>
         </div>
     </div>

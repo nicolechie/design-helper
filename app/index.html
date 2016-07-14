@@ -14,10 +14,13 @@
 	<script src="bower_components/angular-route/angular-route.min.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/ngjs-color-picker/css/ngjs-color-picker.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
 	<script src="./app.js"></script>
 	<script src="./home/home.controller.js"></script>
 	<script src="./login/login.controller.js"></script>
 	<script src="./design/design.controller.js"></script>
+	<script src="./chat/chat.controller.js"></script>
+	<script src="./chat/socket.factory.js"></script>
 	<script src="./use/use.controller.js"></script>
 	<script type="text/javascript" src="bower_components/ngjs-color-picker/js/ngjs-color-picker.js"></script>
 	
@@ -27,6 +30,7 @@
 		<div class="row fullHeight">
 			
 			<div ng-view></div>
+
 
 		</div>
 	</div>
