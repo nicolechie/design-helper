@@ -1,5 +1,19 @@
 var app = angular.module('dhApp.design', []);
-app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope', '$filter', function(getFonts, chosenFonts, $scope, $rootScope, $filter){
+app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope', '$filter', 'CodeStorage', '$location', function(getFonts, chosenFonts, $scope, $rootScope, $filter, CodeStorage, $location){
+	
+	var savedProject = null;
+	var savedCodeFiles = CodeStorage.getData();
+	console.log($location.path());
+	console.log("saved Code Files", savedCodeFiles);
+	for (var i=0; i<savedCodeFiles.length; i++) {
+		if ($location.path() === '/design/'+ savedCodeFiles[i].projectName) {
+	            console.log("match!");
+	            $scope.alreadySaved = true;
+	            savedProject = savedCodeFiles[i];
+	            $scope.savedProject = savedProject;
+	    	}
+	}
+		
 		$scope.newColors = [
 			'#000000',
 	        '#468966',
@@ -42,12 +56,54 @@ app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope',
 
 	  	function setHeaderFilter(val) {
 	  		$scope.headerFontsList = $filter('filter')($scope.allHeaderFonts, {category: val}, true);
-	  		$scope.thisHeaderFont = $scope.headerFontsList[0];
+	  		
+	  		// if a saved project exists, set the dropdown to it's header font, 
+	  		// otherwise set the dropdown to the first font in the header font list
+	  		
+	  		if (savedProject !== null) {
+	  			if (val === '! ' || val === savedProject.chosenHeader.font.family) {
+		  			$scope.thisHeaderFont = savedProject.chosenHeader.font;
+		  			for (var i=0; i<$scope.headerFontsList.length; i++) {
+		  				if ($scope.headerFontsList[i].family === savedProject.chosenHeader.font.family) {
+		  					console.log("inside if");
+		  					$scope.thisHeaderFont = $scope.headerFontsList[i];
+		  					console.log(i);
+		  				}
+		  			}
+	  			}
+	  			else {
+	  			$scope.thisHeaderFont = $scope.headerFontsList[0];
+	  			}	
+	  		}
+	  		else {
+	  			$scope.thisHeaderFont = $scope.headerFontsList[0];
+	  		}
 	  	}
 
 	  	function setParagraphFilter(val) {
 	  		$scope.paragraphFontsList = $filter('filter')($scope.allParagraphFonts, {category: val}, true);
-	  		$scope.thisParagraphFont = $scope.paragraphFontsList[0];
+	  		
+	  		// if a saved project exists, set the dropdown to it's paragraph font, 
+	  		// otherwise set the dropdown to the first font in the paragraph font list
+	  		
+	  		if (savedProject !== null) {
+	  			if (val === '! ' || val === savedProject.chosenParagraph.font.family) {
+		  			$scope.thisParagraphFont = savedProject.chosenParagraph.font;
+		  			for (var i=0; i<$scope.headerFontsList.length; i++) {
+		  				if ($scope.paragraphFontsList[i].family === savedProject.chosenParagraph.font.family) {
+		  					console.log("inside if");
+		  					$scope.thisParagraphFont = $scope.paragraphFontsList[i];
+		  					console.log(i);
+		  				}
+		  			}
+	  			}
+	  			else {
+	  			$scope.thisParagraphFont = $scope.paragraphFontsList[0];
+	  			}
+	  		}
+	  		else {
+	  			$scope.thisParagraphFont = $scope.paragraphFontsList[0];
+	  		}
 	  	}
 
 	  	function loadHeaderFont(thisHeaderFont) {
@@ -69,26 +125,40 @@ app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope',
 	  	}
 
 	  	$scope.button = {
-				"radio": 2,
-				"paragraphRadio": 2
+				'radio': 2,
+				'paragraphRadio': 2
 		};
 
 		function getHeaderSizes() {
 			var headerSizes = [];
 			$scope.headerSizes = headerSizes;
-			for (i=24; i<=84; i+=12) {
-				headerSizes.push(i+"px");
+			for (var i=24; i<=84; i+=12) {
+				headerSizes.push(i+'px');
 			}
-			$scope.thisHeaderSize = headerSizes[1];
+				$scope.thisHeaderSize = headerSizes[1];
+			if (savedProject !== null) {
+				$scope.thisHeaderSize = savedProject.chosenHeader.size;
+			}
+			else {
+				$scope.thisHeaderSize = headerSizes[1];
+			}
 		}
+		
 		$scope.getParagraphSizes = getParagraphSizes;
+		
 		function getParagraphSizes() {
 			var paragraphSizes = [];
 			$scope.paragraphSizes = paragraphSizes;
-			for (i=8; i<=20; i+=2) {
-				paragraphSizes.push(i+"px");
+			for (var i=8; i<=20; i+=2) {
+				paragraphSizes.push(i+'px');
 			}
-			$scope.thisParagraphSize = paragraphSizes[3];
+				$scope.thisParagraphSize = paragraphSizes[3];
+			if (savedProject !== null) {
+				$scope.thisParagraphSize = savedProject.chosenParagraph.size;
+			}
+			else {
+				$scope.thisParagraphSize = paragraphSizes[3];
+			}
 		}
 
 		$scope.customOptions = {
@@ -96,6 +166,7 @@ app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope',
 		};
 
 		function generate() {
+			chosenFonts.reset();
 			chosenFonts.push({font: $scope.thisHeaderFont, size: $scope.thisHeaderSize, color: $scope.selected});
 			chosenFonts.push({font: $scope.thisParagraphFont, size: $scope.thisParagraphSize});
 		}
@@ -107,13 +178,23 @@ app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope',
 		        var fonts = data.data.items;
 		        
 				sortFonts(fonts);
-
 				$scope.allHeaderFonts = allHeaderFonts;
 				$scope.allParagraphFonts = allParagraphFonts;
-				$scope.thisHeaderFont = $scope.allHeaderFonts[0];
-				$scope.thisParagraphFont = $scope.allParagraphFonts[0];
-
-		 		loadHeaderFont($scope.thisHeaderFont);
+		 		console.log(savedProject);
+		 		
+		 		if (savedProject !== null) {
+		 			$scope.alreadySaved = true;
+		 			$scope.selected = savedProject.chosenHeader.color;
+		 			$scope.thisHeaderFont = savedProject.chosenHeader.font;
+		 			$scope.thisParagraphFont = savedProject.chosenParagraph.font;
+				}
+		  		else {
+		  			$scope.thisHeaderFont = $scope.allHeaderFonts[0];
+		  			$scope.thisParagraphFont = $scope.allParagraphFonts[0];
+		  		}
+		  		console.log("already saved", $scope.alreadySaved);
+		  		
+		  		loadHeaderFont($scope.thisHeaderFont);
 		 		loadParagraphFont($scope.thisParagraphFont);
 
 		 		setHeaderFilter('! ');
@@ -121,15 +202,15 @@ app.controller('DesignCtrl', ['getFonts', 'chosenFonts', '$scope', '$rootScope',
 
 		 		getHeaderSizes();
 		 		getParagraphSizes();
-	
+		 		console.log(savedProject.projectName);
 		  });
 }]);
 
-app.directive('chatBox', function() {
-    return {
-        restrict: 'E',
-        transclude: true,
-        templateUrl: '/design/chat.template.html',
-        replace: true
-    };
-});
+// app.directive('chatBox', function() {
+//     return {
+//         restrict: 'E',
+//         transclude: true,
+//         templateUrl: '/design/chat.template.html',
+//         replace: true
+//     };
+// });

@@ -20,29 +20,25 @@ module.exports = function(app, passport) {
             });
         }
         
+        console.log(req.body);
         var chosenHeader = req.body.chosenHeader;
         var chosenParagraph = req.body.chosenParagraph;
         var headerLink = req.body.headerLink;
         var paragraphLink = req.body.paragraphLink;
         var username = req.body.username;
-        
-        // var chosenHeader = "Chosen Header";
-        // var chosenParagraph = "Chosen Paragraph";
-        // var headerLink = "New Header Link";
-        // var paragraphLink = "Paragraph Link";
-        // var username = "Username";
+        var projectName = req.body.projectName;
         
         var codefile = new Codefile({
             chosenHeader: chosenHeader,
             chosenParagraph: chosenParagraph,
             headerLink: headerLink,
             paragraphLink: paragraphLink,
-            username: username
+            user: username,
+            projectName: projectName
         });
-        
-        console.log(req.body, codefile);
 
-        codefile.save(function(err) {
+        codefile.save(function(err, codefile) {
+            console.log(err, codefile);
             if (err) {
                 return res.status(500).json({
                     message: 'Internal server error'
@@ -53,5 +49,14 @@ module.exports = function(app, passport) {
         });
 
     });
-
+    
+       app.put('/codefiles/:id', jsonParser,  function(req, res) {
+          console.log("req.body", req.body);
+        codefiles.edit(req.body, function(codefile) {
+            res.status(201).json(codefile);
+        }, function(err) {
+            res.status(400).json(err);
+        });
+    });
+        
 };

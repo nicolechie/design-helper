@@ -1,6 +1,7 @@
 .marginTop20 {
 	margin-top: 20px;
 }
+
 ul {
 	margin-bottom: 0 !important;
 	margin-top: 5px !important;
@@ -95,6 +96,10 @@ ul {
   padding-right: 3px !important;
   padding-left: 3px !important;
   line-height: .9 !important;
+}
+
+.lmargin5 {
+  margin-left: 5px;
 }
 
 .modal-backdrop.am-fade {

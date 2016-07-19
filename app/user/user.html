@@ -1,6 +1,13 @@
-<div class="col-md-10 col-md-offset-1 marginTop20">
-    <h3 class = "text-center">Saved Designs</h3>
-    <p class = "text-center">
+<div class="col-md-8 col-md-offset-2 marginTop20"> 
+    <h3 class="text-center">Saved Designs</h3>
+    <hr>
+    <p ng-repeat="savedProject in savedProjects"> 
+        {{ savedProject.projectName }} 
+        <a role="button" class="btn btn-default" ng-href="/use/{{ savedProject.projectName }}">View</a> 
+        <a role="button" class="btn btn-default" ng-href="/design/{{ savedProject.projectName }}">Edit</a>
+    </p>
+    <hr>
+    <p class="text-center">
         <a role="button" class="btn btn-default" ng-href="/#/design">New Design</a>
     </p>
 </div>

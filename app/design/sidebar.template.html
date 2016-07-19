@@ -44,6 +44,6 @@
 <hr>
 
 <p class="text-center">
-	<a class="btn btn-default" role="button" ng-href="/#/use" ng-click="generate()">Generate</a>
+	<a class="btn btn-default" role="button" ng-hide="alreadySaved" ng-href="/codefile/new" ng-click="generate()">Generate</a><a class="btn btn-default" role="button" ng-show="alreadySaved" ng-href="/codefile/edit/{{ savedProject.projectName }}" ng-click="generate()">Generate</a>
 </p>
 

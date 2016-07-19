@@ -1,19 +1,27 @@
-<nav class="navbar navbar-default" ng-app = "dhApp.home" ng-controller = "HomeCtrl">
+<nav class="navbar navbar-default" ng-app="dhApp.home" ng-controller="HomeCtrl">
     <div class="container-fluid">
-        <div class="navbar-header navbar-right">
-            <form class="navbar-form" ng-hide = "signedIn" ng-submit="logIn(userLogin)">
-            <div class="form-group input-group-sm">
-                <input type="text" class="form-control" placeholder="username" ng-model = "userLogin.username">
-            </div>
-            <div class="form-group input-group-sm">
-                <input type="password" class="form-control" placeholder="password" ng-model = "userLogin.password">
-            </div>
-            <button type="submit" class="btn btn-default btn-sm">Sign in</button>
-            </form>
-            <p class="navbar-text" ng-show = "signedIn">
-                Welcome back <a href = "/#/{{ user.username }}/home"> {{ user.firstName }}! </a>
-                <button class="btn btn-default btn-sm" ng-click = "logOut()">Log out</button>
-            </p>
+        
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">DESIGN HELPER</a>
         </div>
+        
+        <div class="navbar-header navbar-right">
+            <form class="navbar-form" ng-hide="signedIn" ng-submit="logIn(userLogin)">
+                <div class="form-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="username" ng-model="userLogin.username" required>
+                </div>
+                <div class="form-group input-group-sm">
+                    <input type="password" class="form-control" placeholder="password" ng-model="userLogin.password" required>
+                </div>
+                <button type="submit" class="btn btn-default btn-sm">Sign in</button>
+            </form>
+            <small ng-show="loginError" class="bg-danger">Incorrect username or password</small>
+            
+            <p class="navbar-text" ng-show="signedIn">
+                Welcome back <a href="/#/{{ user.username }}/home">{{ user.firstName }}</a>!
+            </p>
+            <button type="button" class="btn btn-default navbar-btn btn-sm" ng-show="signedIn" ng-click="logOut()">Log out</button>
+        </div>
+        
     </div>
 </nav>

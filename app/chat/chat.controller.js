@@ -18,7 +18,7 @@ app.controller('ChatCtrl', ['$scope', 'socket', 'UserInfo', function($scope, soc
 
       $scope.messages.push(message);
 
-    $scope.message = '';
+      $scope.message = '';
     };
     
 }]);

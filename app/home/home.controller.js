@@ -1,23 +1,22 @@
-var app = angular.module('dhApp.home', ['mgcrea.ngStrap', 'mgcrea.ngStrap.modal', 'ngAnimate']);
+var app = angular.module('dhApp.home', ['mgcrea.ngStrap', 'mgcrea.ngStrap.modal', 'ngAnimate', 'mgcrea.ngStrap.alert']);
 
-
-app.controller('HomeCtrl', ['$scope', '$modal', '$http', 'UserInfo', function($scope, $modal, $http, UserInfo){
+app.controller('HomeCtrl', ['$scope', '$modal', '$http', 'UserInfo', '$alert', function($scope, $modal, $http, UserInfo, $alert){
     
 // Sign Up
 
-    var signupModal = $modal({ scope: $scope, templateUrl: "home/signup.html", contentTemplate: false, html: true, show: false });
+    var signupModal = $modal({ scope: $scope, templateUrl: 'home/signup.html', contentTemplate: false, html: true, show: false });
 
     $scope.showModal = function () {
         signupModal.$promise.then(signupModal.show);
     };
     
+    $scope.loginError = false;
     $scope.signedUp = false;
+    $scope.signedIn = false;
     $scope.user = {};
     $scope.createUser = function() {
-        console.log($scope.user);
         $http.post('/users', $scope.user)
         .then(function successCallback(response) {
-            console.log('Success!');
             $scope.signedUp = true;
         }, function errorCallback(response) {
             console.log("Error");
@@ -29,7 +28,6 @@ app.controller('HomeCtrl', ['$scope', '$modal', '$http', 'UserInfo', function($s
  $scope.logOut = function() {
         $http.get('/logout')
         .then(function (response) {
-            console.log('Success!');
             $scope.signedIn = false;
         }, function (response) {
             console.log("Error");
@@ -42,14 +40,14 @@ app.controller('HomeCtrl', ['$scope', '$modal', '$http', 'UserInfo', function($s
     $scope.logIn = function() {
         $http.post('/login', $scope.userLogin)
         .then(function (response) {
-            console.log(response);
-            console.log('Success!');
+            $scope.loginError = false;
             $scope.signedIn = true;
             $scope.user = response.data;
             UserInfo.setData(response.data);
         }, function (response) {
               console.log(response);
             console.log("Error");
+            $scope.loginError = true;
         });
     };
 
@@ -82,5 +80,5 @@ app.factory('UserInfo', function () {
         getData: function () {
             return user;
         }
-    }
+    };
 });

@@ -7,6 +7,8 @@ var app = express();
 
   app.use(express.static(__dirname + '/app'));
   // app.use(express.bodyParser());
+  // parse application/x-www-form-urlencoded 
+  app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json());
   // app.use(express.session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
@@ -31,19 +33,19 @@ io.on('connection', function (socket) {
       io.emit('message', this.name + ' connected');
     });
 
-       socket.on('send:message', function (message) {
-           console.log(message);
-         socket.broadcast.emit('send:message', message);
-       });
+   socket.on('send:message', function (message) {
+       console.log(message);
+     socket.broadcast.emit('send:message', message);
+   });
    
 //     socket.on('message', function(message) {
 //         console.log('Received message:', message);
 //         socket.broadcast.emit('message', this.name + ': ' + message);
 //     });
     
-//     socket.on('disconnect', function (message) {
-//       io.emit('message', this.name + ' disconnected');
-//   });
+    socket.on('disconnect', function (message) {
+      io.emit('message', this.name + ' disconnected');
+  });
 });
 
 mongoose.connect('mongodb://localhost/auth').then(function() {

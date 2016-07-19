@@ -17,12 +17,15 @@ var CodefileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    username: {
+    user: {
         type: String,
-        required: true,
+        required: true
+    },
+    projectName: {
+        type: String,
+        required: true
     }
 });
-
 
 var Codefile = mongoose.model('Codefile', CodefileSchema);
 

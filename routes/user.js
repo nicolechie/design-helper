@@ -55,11 +55,10 @@ module.exports = function(app, passport) {
     passport.use('local', new LocalStrategy(
       function(username, password, callback) {
           
-        console.log(username, password);
         User.findOne({
             username: username
         }, function (err, user) {
-            console.log(err, user);
+            // console.log(err, user);
             if (err) {
                 callback(err);
                 return;
@@ -71,7 +70,7 @@ module.exports = function(app, passport) {
                 });
             }
             user.validatePassword(password, function(err, isValid) {
-                console.log(err, isValid);
+                // console.log(err, isValid);
                 if (err) {
             
                     return callback(err);
@@ -265,6 +264,7 @@ module.exports = function(app, passport) {
                 console.log(req.body, user);
     
                 user.save(function(err) {
+                    
                     if (err) {
                         return res.status(500).json({
                             message: 'Internal server error'

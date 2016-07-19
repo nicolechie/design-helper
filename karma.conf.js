@@ -23,7 +23,7 @@ module.exports = function(config) {
     './app/bower_components/angular-strap/dist/angular-strap.tpl.js',
     './app/bower_components/ngjs-color-picker/js/ngjs-color-picker.js',
     './app/home/*.js',
-    './app/use/*.js',
+    './app/codefile/*.js',
     './app/*.js',
     './app/home/*.html',
     ],
@@ -74,7 +74,6 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

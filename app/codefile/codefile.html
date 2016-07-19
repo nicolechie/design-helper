@@ -1,0 +1,35 @@
+<div class="col-md-10 col-md-offset-1 marginTop20">
+	<h2>Paste this into the head of your HTML Doc:</h2>
+
+	<pre>
+		{{ generatedCode.headerLink }}
+		{{ generatedCode.paragraphLink }}</pre>
+
+	<h2>Paste this into your CSS:</h2>
+
+	<pre>
+		.header {
+			font-family: '{{ generatedCode.chosenHeader.font.family }}', {{ chosenHeader.font.category }};
+			font-size: {{ generatedCode.chosenHeader.size }};
+			color: {{ generatedCode.chosenHeader.color }};
+		}
+
+		.paragraph {
+			font-family: '{{ generatedCode.chosenParagraph.font.family }}', {{ generatedCode.chosenParagraph.font.category }};
+			font-size: {{ generatedCode.chosenParagraph.size }};
+		}</pre>
+
+	<h2>Add paragraph and header classes where you want them:</h2>
+	<pre>
+		&lt;h1 class = "header"&gt;My Header&lt;/h1&gt;
+
+		&lt;p class = "paragraph"&gt;My paragraph text.&lt;/p&gt;</pre>
+
+	<p class="text-center">
+		<a class="btn btn-default" role="button" ng-href="/design/" ng-hide="alreadySaved">Start Over</a>
+		<a class="btn btn-default" role="button" ng-href="/design/{{ savedProject.projectName }}" ng-show="alreadySaved">Edit</a>
+		<button class="btn btn-default" type="button" ng-click="saveChanges(generatedCode)" ng-show="alreadySaved">Save Changes</button>
+		<button class="btn btn-default" data-ng-click="showSaveModal()" type="button" data-animation="am-fade-and-scale" data-placement="center">
+			<span ng-hide="alreadySaved">Save</span><span ng-show="alreadySaved">Save New</span></button>
+	</p>
+</div>
