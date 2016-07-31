@@ -1,0 +1,24 @@
+<section class="row"> 
+	<div class="col-md-4 brand-logo">
+		<div class="logo">
+			<h2 class="text-center brand design">Design</h1>
+	    	<h2 class="text-center brand negTMargin">Helper</h1>
+    	</div>
+	</div>
+	<div class="col-md-8">
+		
+	<form name="userForm" ng-submit="hc.createUser()">
+		<input type="text" class="form-control pull-left half input-margin" placeholder="first name" name="firstName" ng-model="hc.user.firstName" required>
+		<input type="text" class="form-control pull-right half input-margin" placeholder="last name" name="lastName" ng-model="hc.user.lastName" required>
+		<input type="text" class="form-control input-margin" placeholder="username" name="username" ng-model="hc.user.username" required>
+		<small ng-show="hc.takenUsername" class="bg-danger">This username is taken.</small>
+		<input type="email" class="form-control input-margin" placeholder="email" name="email" ng-model="hc.user.email" required>
+		<small ng-show="hc.takenEmail" class="bg-danger">There is already an account associated with this email.</small>
+		<div class="form-group">	
+			<input type="password" class="form-control" placeholder="password" name="password" ng-model="hc.user.password" required>
+		</div>
+		<button type="submit" class="form-control" class="btn btn-default">Sign me up!</button>
+	</form>
+	
+	</div>
+</section>

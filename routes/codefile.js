@@ -38,7 +38,7 @@ module.exports = function(app, passport) {
         });
 
         codefile.save(function(err, codefile) {
-            console.log(err, codefile);
+            // console.log(err, codefile);
             if (err) {
                 return res.status(500).json({
                     message: 'Internal server error'
@@ -50,10 +50,10 @@ module.exports = function(app, passport) {
 
     });
     
-       app.put('/codefiles/:id', jsonParser,  function(req, res) {
-          console.log("req.body", req.body);
+    app.put('/codefiles/:id', jsonParser,  function(req, res) {
         codefiles.edit(req.body, function(codefile) {
             res.status(201).json(codefile);
+                console.log("CODEFILE", codefile);
         }, function(err) {
             res.status(400).json(err);
         });

@@ -21,13 +21,17 @@ module.exports = function(config) {
     './app/bower_components/angular-route/angular-route.js',
     './app/bower_components/angular-strap/dist/angular-strap.js',
     './app/bower_components/angular-strap/dist/angular-strap.tpl.js',
+    './app/bower_components/angular-animate/angular-animate.js',
     './app/bower_components/ngjs-color-picker/js/ngjs-color-picker.js',
     './app/home/*.js',
     './app/codefile/*.js',
+    './app/design/*.js',
+    './app/user/*.js',
     './app/*.js',
+    './app/test/*.js',
     './app/home/*.html',
+    './app/design/*.html',
     ],
-
 
     // list of files to exclude
     exclude: [
@@ -37,16 +41,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'app/home/*.html': ['ng-html2js']
-    
+        'app/design/*.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
         // strip app from the file path
-        stripPrefix: 'app/home/'
+        stripPrefix: 'app/design/'
     },
-
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -55,7 +56,8 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 9876,
+    // port: 9876,
+    port: process.env.PORT,
 
 
     // enable / disable colors in the output (reporters and logs)
@@ -73,7 +75,9 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    hostname: process.env.IP,
+  
+    runnerPort: 0,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -82,5 +86,7 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
+
+// Cloud9: karma start --no-browsers

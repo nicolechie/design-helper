@@ -1,8 +1,8 @@
-app.directive('chatBox', function() {
+app.directive('navBar', function() {
     return {
         restrict: 'E',
         transclude: true,
-        templateUrl: '/chat/chat.template.html',
+        templateUrl: 'shared/navbar.template.html',
         replace: true
     };
 });

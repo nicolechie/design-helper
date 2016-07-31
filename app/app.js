@@ -1,40 +1,39 @@
-var app = angular.module('dhApp', ['dhApp.design', 'dhApp.login', 'dhApp.home', 'dhApp.codefile', 'dhApp.user', 'mgcrea.ngStrap', 'mgcrea.ngStrap.button', 'ngjsColorPicker', 'ngRoute']);
+var app = angular.module('dhApp', ['dhApp.design', 'dhApp.home', 'dhApp.codefile', 'dhApp.user', 'mgcrea.ngStrap', 'mgcrea.ngStrap.button', 'ngjsColorPicker', 'ngRoute']);
 
 app
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
     	$locationProvider.html5Mode(true);
         $routeProvider
         .when('/', {
-            templateUrl : '/home/home.html',
-            controller : 'HomeCtrl'
-        })
-        .when('/login', {
-            templateUrl : '/login/login.html',
-            controller : 'LoginCtrl'
+            templateUrl : '/components/home/home.html',
+            controller : 'HomeCtrl as hc'
         })
         .when('/:username/home', {
-    		templateUrl : '/user/user.html',
-    		controller : 'UserCtrl'
+    		templateUrl : '/components/user/user.html',
+    		controller : 'UserCtrl as uc'
     	})
         .when('/design', {
-            templateUrl : '/design/design.html',
-            controller : 'DesignCtrl'
+            templateUrl : '/components/design/design.html',
+            controller : 'DesignCtrl as dc'
         })
         .when('/design/:projectlink', {
-            templateUrl : '/design/design.html',
-            controller : 'DesignCtrl'
+            templateUrl : '/components/design/design.html',
+            controller : 'DesignCtrl as dc'
         })
         .when('/codefile/new', {
-		    templateUrl : '/codefile/codefile.html',
-		    controller : 'CodefileCtrl'
+		    templateUrl : '/components/codefile/codefile.html',
+		    controller : 'CodefileCtrl as cc'
 		})
 		.when('/codefile/:projectlink', {
-		    templateUrl : '/codefile/codefile.html',
-		    controller : 'CodefileCtrl'
+		    templateUrl : '/components/codefile/codefile.html',
+		    controller : 'CodefileCtrl as cc'
 		})
 		.when('/codefile/edit/:projectlink', {
-		    templateUrl : '/codefile/codefile.html',
-		    controller : 'CodefileCtrl'
+		    templateUrl : '/components/codefile/codefile.html',
+		    controller : 'CodefileCtrl as cc'
+		})
+		.otherwise({
+    		redirectTo : '/'
 		});
     }])
 	.constant('DH_API_PREFIX', 'https://www.googleapis.com/webfonts/v1/webfonts?')
@@ -57,19 +56,4 @@ app
 	    };
 	}]) 
 	
-	.factory('chosenFonts', [function() {
-		var chosenFonts = [];
-	    return {
-	    	push: function(font) {
-	    		chosenFonts.push(font);
-	    	},
-	    	list: function() {
-	    		console.log("chosen fonts", chosenFonts);
-	    		return chosenFonts;
-	    	},
-	    	reset: function() {
-	    		chosenFonts = [];
-	    		return;
-	    	}
-	    };
-	}]);
+	

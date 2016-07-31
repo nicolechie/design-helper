@@ -1,0 +1,50 @@
+<h3>Edit Mode</h3>
+<hr>
+<h4>Headers</h4>
+<div class="btn-group" ng-model="dc.button.radio" bs-radio-group>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="dc.setHeaderFilter('sans-serif')" value="0">Sans Serif</label>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="dc.setHeaderFilter('serif')" value="1">Serif</label>
+  <label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="dc.setHeaderFilter('! ')" value="2">All Fonts</label>
+</div>
+
+<form name="headerFonts" class="form-inline">
+	<select name="headerFontSelect" class="form-control selectWidth marginTop5 {{ dc.headerFontFamily }}" ng-model="dc.thisHeaderFont" ng-options="font.family for font in dc.headerFontsList" ng-change="dc.loadHeaderFont(dc.thisHeaderFont)"> 
+	</select>	
+
+	<select name="headerSizeSelect" class="form-control selectWidth marginTop5" ng-model="dc.thisHeaderSize" ng-options="size for size in dc.headerSizes" ng-change="dc.loadHeaderSize(dc.thisHeaderSize)"> 
+	</select>	
+
+	<ngjs-color-picker selected="dc.selected" custom-colors="dc.newColors" options="dc.customOptions"></ngjs-color-picker>
+	<input class="form-control" type="text" ng-model="dc.selected">
+				
+</form>
+
+<hr>
+
+<h4>Paragraphs</h4>
+
+<div class="btn-group" ng-model="dc.button.paragraphRadio" bs-radio-group>
+
+	<label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="dc.setParagraphFilter('sans-serif')" value="0">Sans Serif</label>
+	<label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="dc.setParagraphFilter('serif')" value="1">Serif</label>
+	<label class="btn btn-default"><input type="radio" class="btn btn-default" ng-click="dc.setParagraphFilter('! ')" value="2">All Fonts</label>
+
+</div>
+
+<form name="paragraphFonts" class="form-inline">
+
+	<select name="paragraphFontSelect" class="form-control selectWidth marginTop5 {{ dc.paragraphFontFamily }}" ng-model="dc.thisParagraphFont" ng-options="font.family for font in dc.paragraphFontsList" ng-change="dc.loadParagraphFont(dc.thisParagraphFont)"> 
+	</select>	
+
+	<select name="paragraphSizeSelect" class="form-control selectWidth marginTop5" ng-model="dc.thisParagraphSize" ng-options="size for size in dc.paragraphSizes" ng-change="dc.loadParagraphSize(dc.thisParagraphSize)"> 
+	</select>	
+				
+</form>
+
+<hr>
+
+<p class="text-center">
+	<a class="btn btn-default" role="button" ng-hide="dc.alreadySaved" ng-href="/codefile/new" ng-click="dc.generate()">Generate</a>
+	<a class="btn btn-default" role="button" ng-show="dc.alreadySaved" ng-href="/codefile/edit/{{ dc.savedProject.projectName }}" ng-click="dc.generate()">Generate</a>
+</p>
+

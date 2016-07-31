@@ -1,0 +1,41 @@
+<div class='col-md-3 asideContent fullHeight' ng-show='dc.editMode'>
+				
+	<sidebar-menu>
+	</sidebar-menu>
+
+</div>
+<div class='col-md-1'>
+
+	<span ng-show='!dc.editMode' ng-click='dc.editMode=true'> <i class='fa fa-bars fa-2x icon' aria-hidden='true'></i></span>
+	            	
+</div>
+
+<div class='marginTop20 fullHeight' ng-class="{'col-md-7': dc.editMode, 'col-md-10': !dc.editMode}" ng-click='dc.editMode=false'>
+	<div class='row height70'>
+		
+		<h1 class='header {{ dc.forHeaderCSS }} text-center' ng-style="{'font-size': dc.thisHeaderSize,'color': dc.selected}" make-editable>Header
+		</h1>
+		
+		<div class='paragraph {{ dc.forParagraphCSS }}' ng-style="{'font-size': dc.thisParagraphSize}" make-editable>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus dicta nam cupiditate obcaecati! Nisi consequatur sapiente voluptatem consequuntur iusto unde nostrum porro, nesciunt fuga vel, dignissimos similique et maxime voluptatum. 
+	
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odio ut atque amet, cumque cum non, expedita deleniti, aliquam nobis magnam. 
+			</p>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus dicta nam cupiditate obcaecati! Nisi consequatur sapiente voluptatem consequuntur iusto unde nostrum porro, nesciunt fuga vel, dignissimos similique et maxime voluptatum. 
+	
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odio ut atque amet, cumque cum non, expedita deleniti, aliquam nobis magnam. Doloremque dolorum aliquid architecto facere optio ratione corrupti, sed. 
+	
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt commodi nisi, cupiditate distinctio fugit, culpa ab similique obcaecati, enim iusto facere eligendi porro omnis esse ducimus tempora dolor? Illo, eveniet?
+			</p>
+	
+			<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+			</p>
+			
+		</div>
+	</div>
+	
+	<chat-box></chat-box>
+	
+</div>

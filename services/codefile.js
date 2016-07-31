@@ -12,11 +12,12 @@ exports.list = function(callback, errback) {
 
 exports.edit = function(codefile, callback, errback) {
     var query = {_id : codefile.id};
-    Codefile.findOneAndUpdate(query, { chosenHeader : codefile.chosenHeader}, function(err, codefile) {
+    Codefile.findOneAndUpdate(query, {chosenHeader: codefile.chosenHeader, chosenParagraph: codefile.chosenParagraph, headerLink: codefile.headerLink, paragraphLink: codefile.paragraphLink}, function(err, codefile) {
         if (err) {
             errback(err);
             return;
         }
+        console.log("edit", codefile);
         callback(codefile);
     });
 };

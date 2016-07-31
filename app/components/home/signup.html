@@ -6,11 +6,11 @@
                 <h4 class="modal-title">Sign Up</h4>
             </div>
             <div class="modal-body">
-                <opt-in ng-hide="signedUp"></opt-in>
-                <p ng-show="signedUp">Hi {{ user.username }}! Thanks for signing up with design helper.</p>
+                <opt-in ng-hide="hc.signedUp"></opt-in>
+                <p ng-show="hc.signedUp">Hi {{ hc.user.username }}! Thanks for signing up with design helper.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="$hide()"><span ng-hide="signedUp">No thanks</span><span ng-show="signedUp">Okay</span></button>
+                <button type="button" class="btn btn-default" ng-click="$hide()"><span ng-hide="hc.signedUp">No thanks</span><span ng-show="hc.signedUp">Okay</span></button>
             </div>
         </div>
     </div>

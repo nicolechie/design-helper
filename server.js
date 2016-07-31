@@ -8,12 +8,13 @@ var app = express();
   app.use(express.static(__dirname + '/app'));
   // app.use(express.bodyParser());
   // parse application/x-www-form-urlencoded 
-  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   // app.use(express.session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
   // app.use(app.router);
 
+// var flash = require('connect-flash');
 
 require('./routes/user.js')(app, passport);
 require('./routes/codefile.js')(app, passport);
@@ -51,3 +52,5 @@ io.on('connection', function (socket) {
 mongoose.connect('mongodb://localhost/auth').then(function() {
     server.listen(8080 || process.env.PORT);
 });
+
+exports.app = app;

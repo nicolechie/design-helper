@@ -1,24 +1,26 @@
 var app = angular.module('dhApp.design');
 
 app.controller('ChatCtrl', ['$scope', 'socket', 'UserInfo', function($scope, socket, UserInfo){
-    $scope.messages = [];
-    $scope.user = UserInfo.getData();
+    var self = this;
+    
+    self.messages = [];
+    self.user = UserInfo.getData();
     
     socket.on('send:message', function (message) {
-      $scope.messages.push(message);
+      self.messages.push(message);
     });
     
-    $scope.sendMessage = function () {
+    self.sendMessage = function () {
       var message = {
-        user: $scope.user.username,
-        text: $scope.message
+        user: self.user.username,
+        text: self.message
       };
       
       socket.emit('send:message', message);
 
-      $scope.messages.push(message);
+      self.messages.push(message);
 
-      $scope.message = '';
+      self.message = '';
     };
     
 }]);

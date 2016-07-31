@@ -5,8 +5,6 @@ module.exports = function(app, passport) {
     var bodyParser = require('body-parser');
     var jsonParser = bodyParser.json();
     var bcrypt = require('bcrypt');
-
-    // var passport = require('passport');
     
     var LocalStrategy = require('passport-local').Strategy;
     var BasicStrategy = require('passport-http').BasicStrategy;
@@ -19,46 +17,12 @@ module.exports = function(app, passport) {
         });
     });
 
-    passport.use('basic', new BasicStrategy(function(username, password, callback) {
-        console.log("basic strategy");
-        User.findOne({
-            username: username
-        }, function (err, user) {
-            console.log(err, user);
-            if (err) {
-                callback(err);
-                return;
-            }
-    
-            if (!user) {
-                return callback(null, false, {
-                    message: 'Incorrect username.'
-                });
-            }
-            user.validatePassword(password, function(err, isValid) {
-                console.log(err, isValid);
-                if (err) {
-            
-                    return callback(err);
-                }
-    
-                if (!isValid) {
-                    return callback(null, false, {
-                        message: 'Incorrect password.'
-                    });
-                }
-                return callback(null, user);
-            });
-        });
-    }));
-
     passport.use('local', new LocalStrategy(
       function(username, password, callback) {
           
         User.findOne({
             username: username
         }, function (err, user) {
-            // console.log(err, user);
             if (err) {
                 callback(err);
                 return;
@@ -70,7 +34,6 @@ module.exports = function(app, passport) {
                 });
             }
             user.validatePassword(password, function(err, isValid) {
-                // console.log(err, isValid);
                 if (err) {
             
                     return callback(err);
@@ -270,7 +233,6 @@ module.exports = function(app, passport) {
                             message: 'Internal server error'
                         });
                     }
-    
                     return res.status(201).json({});
                 });
             });

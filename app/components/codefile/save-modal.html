@@ -1,0 +1,23 @@
+<div ng-controller="CodefileCtrl as cc" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title">Save</h4>
+            </div>
+            <div class="modal-body">
+    			<form name="saveForm" ng-hide="cc.saved">
+    				<div class="form-group">	
+    					<label for="projectName">Project Name</label><input type="string" class="form-control" placeholder="project name" name="projectName" ng-model="cc.generatedCode.projectName">
+    				</div>
+    				
+    				 <button type="submit" class="form-control" class="btn btn-default" ng-click="cc.saveCode(cc.generatedCode)">Save Project</button>
+    			</form>
+    			<p ng-show="cc.saved">Project Saved</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="$hide()"><span ng-hide="cc.saved">No thanks</span><span ng-show="cc.saved">Okay</span></button>
+            </div>
+        </div>
+    </div>
+</div>

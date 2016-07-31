@@ -1,0 +1,8 @@
+<div 
+	ng-init="dc.isEditable=false"
+	ng-transclude
+	contenteditable="{{ dc.isEditable }}"
+	ng-class="{'editable' : dc.isEditable}"
+	ng-click="dc.isEditable=true"
+	>
+</div>
