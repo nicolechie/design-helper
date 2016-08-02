@@ -13,7 +13,7 @@
     "passport": "0.3.2",
     "passport-http": "0.3.0",
     "passport-local": "1.0.0",
-    "bycrypt": "0.8.7"
+    "bcrypt": "0.8.7"
   },
   "devDependencies": {
     "chai": "^3.5.0",
