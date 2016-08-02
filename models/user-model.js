@@ -37,44 +37,6 @@ UserSchema.methods.validatePassword = function(password, callback) {
     });
 };
 
-// UserSchema.path('email').validate(function(value, done) {
-//     this.model('User').count({ email: value }, function(err, count) {
-//         if (err) {
-//             return done(err);
-//         } 
-//         // If `count` is greater than zero, "invalidate"
-//         done(!count);
-//     });
-// }, 'Email already exists');
-
-// Then it'll just get wrapped into ValidationError and will return as first argument when you call validate or save .
-
-// UserSchema.methods.validateUsername = function(username, callback) {
-//     var self = this;
-//     mongoose.models["User"].findOne({username : self.username}, function(err, isValid) {
-//          if (err) {
-//             callback(err);
-//             return;
-//         }
-//         callback(null, isValid);
-//     });
-// };
-
-// UserSchema.pre("save",function(next, done) {
-//     var self = this;
-//     mongoose.models["User"].findOne({email : self.email}, function(err, results) {
-//         if(err) {
-//             done(err);
-//         } else if(results) { //there was a result found, so the email address exists
-//             self.invalidate("email","email must be unique");
-//             done(new Error("email must be unique"));
-//         } else {
-//             done();
-//         }
-//     });
-//     next();
-// });
-
 var User = mongoose.model('User', UserSchema);
 
 module.exports = User;
