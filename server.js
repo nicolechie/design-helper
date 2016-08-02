@@ -59,8 +59,8 @@ mongoose.connect(process.env.MONGODB_NW).then(function(err) {
     if (err) {
         console.log("error", err);
     }
-    server.listen(8080 || process.env.PORT);
-    console.log("Connected");
+    server.listen(process.env.PORT || 8080);
+    console.log("connected", process.env.PORT);
 });
 
 // CONNECTION EVENTS
