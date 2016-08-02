@@ -49,7 +49,7 @@ io.on('connection', function (socket) {
   });
 });
 
-mongoose.connect('mongodb://nicolechie:taioRu26@ds017584.mlab.com:17584/shopping-list').then(function() {
+mongoose.connect(process.env.MONGODB_NW).then(function() {
     server.listen(8080 || process.env.PORT);
 });
 
