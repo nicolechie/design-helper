@@ -1,7 +1,6 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 
-global.environment = 'test';
 var server = require('../server.js');
 var User = require('../models/user-model');
 var Codefile = require('../models/codefile-model');
@@ -13,7 +12,6 @@ var app = server.app;
 chai.use(chaiHttp);
 
 // Testing for Users Endpoint
-
 describe('Users: Get', function() {
     before(function(done) {
         seed.run(function() {
@@ -106,13 +104,6 @@ describe('Codefiles: Post', function() {
             done();
         });
     });
-    
-    // after(function(done) {
-    //     Codefile.remove(function() {
-    //         done();
-    //     });
-    // });
-
 
      it('should add a codefile on POST', function(done) {
         chai.request(app)

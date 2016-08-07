@@ -1,5 +1,6 @@
 // Display the fonts in a select
 // When a font is chosen, it changes the header font
+
 describe("headerFilter", function() {
     beforeEach(module("dhApp"));
     	var ctrl, scope;
@@ -35,6 +36,7 @@ describe("headerFilter", function() {
             });
         });
 });
+
 // Display the fonts in a select
 // When a font is chosen, it changes the paragraph font
 
@@ -73,6 +75,7 @@ describe("paragraphFilter", function() {
             });
         });
 });
+
 // Display the font sizes in a select
 // When a size is chosen, it changes the size of the header font
 
@@ -92,31 +95,6 @@ describe("getParagraphSizes", function() {
             expect(ctrl.thisParagraphSize).toBe('14px');
             });
         });
-});
-
-
-
-// Sort Fonts
-describe("sortFonts", function() {
-    beforeEach(module("dhApp"));
-        var ctrl, scope;
-        beforeEach(inject(function($controller, $rootScope) {
-            scope = $rootScope.$new();
-            ctrl = $controller('DesignCtrl', {
-                $scope : scope
-            });
-            ctrl.fonts = [{category: 'sans-serif', family:'Open Sans'}, 
-                            {category: 'serif', family:'Lora'},
-                            {category: 'sans-serif', family:'Roboto'}];
-        }));
-        
-    // describe("forLink", function() {
-
-    //     it('should replace any spaces from the font with a plus sign', function() {
-    //         scope.sortFonts(scope.fonts);
-    //         expect(scope.forLink).toBe('Open+Sans');
-    //         });
-    //     });
 });
 
 // Display the color options in a select
@@ -159,54 +137,8 @@ describe('Colors Directive', function() {
     });
 });
 
-// describe('design.html', function() {
-    
-//     var scope,
-//         element,
-//         compiled,
-//         thisHeaderSize,
-//         html,
-//         makeEditable,
-//         forHeaderCSS,
-//         headerFontFamily,
-//         selected,
-//         ctrl;
-
-//     beforeEach(module("dhApp"));
-//     // beforeEach(module('editableItemTemplate.html'));
-//     beforeEach(module('design.html'));
-//     beforeEach(inject(function($rootScope, $compile, $httpBackend) {
-//         // $httpBackend.whenGET('app/home/editableItemTemplate.html').respond('...');
-//         thisHeaderSize = '36px';
-//         forHeaderCSS = ' ';
-//         headerFontFamily = ' ';
-//         selected = 'black';
-    
-//         // html="";
-//         // html += "<h1 ";
-//         // html += " class = 'header " + forHeaderCSS + " text-center' ";
-//         // // html += " ng-style='{ 'font-size':" + thisHeaderSize + ", 'color' :" + selected + " }' >" ;
-//         // // html += " ng-style="'{' font-size:  '36px' , color : 'black' ''}'" >" ;
-//         // html += " Header " + headerFontFamily ;
-//         // html += " </h1> ";
-//         // scope = $rootScope.$new();
-//         // compiled = $compile(html);
-//         // element = compiled(scope);
-//         // scope.$digest();
-
-//     }));
-//     it('should have these attributes', function(){
-//         console.log(element.find('h1'));
-//         expect(element.find('h1').length).toBe(1);
-//     });
-// });
-// Display the font sizes in a select
-// When a size is chosen, it changes the size of the paragraph font
-
 // When you click generate it goes to the next page
 // That page displays the code for the selected options
-
-
 
 describe("dhRequest", function() {
     beforeEach(module('dhApp'));

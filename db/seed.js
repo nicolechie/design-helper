@@ -1,5 +1,4 @@
 var User = require('../models/user-model.js');
-// var Codefile = require('../models/codefile-model.js');
 
 exports.run = function(callback, errback) {
     User.create({

@@ -1,3 +1,5 @@
+var app = angular.module('dhApp.home');
+
 app.directive('optIn', function() {
     return {
         restrict: 'E',

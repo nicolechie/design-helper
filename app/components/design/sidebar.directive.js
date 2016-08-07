@@ -1,3 +1,5 @@
+var app = angular.module('dhApp.design');
+
 app.directive('sidebarMenu', function() {
 	return {
 		restrict: 'E',

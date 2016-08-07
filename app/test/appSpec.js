@@ -4,7 +4,7 @@ describe("dhApp", function() {
     describe("/", function() {
         it('should load the template and controller',
         inject(function($location, $rootScope, $httpBackend, $route) {
-            $httpBackend.whenGET('/home/home.html').respond('...');
+            $httpBackend.whenGET('/components/home/home.html').respond('...');
             $httpBackend.expectGET('/').respond({});
 
             $rootScope.$apply(function() {
@@ -12,7 +12,7 @@ describe("dhApp", function() {
             });
             
             expect($route.current.controller).toBe("HomeCtrl as hc");
-            expect($route.current.loadedTemplateUrl).toBe("/home/home.html");
+            expect($route.current.loadedTemplateUrl).toBe("/components/home/home.html");
 
         }));
     });
@@ -20,7 +20,7 @@ describe("dhApp", function() {
     describe("/design", function() {
         it('should load the template and controller',
         inject(function($location, $rootScope, $httpBackend, $route) {
-            $httpBackend.whenGET('/design/design.html').respond('...');
+            $httpBackend.whenGET('/components/design/design.html').respond('...');
             $httpBackend.expectGET('/design').respond({});
 
             $rootScope.$apply(function() {
@@ -28,7 +28,7 @@ describe("dhApp", function() {
             });
             
             expect($route.current.controller).toBe("DesignCtrl as dc");
-            expect($route.current.loadedTemplateUrl).toBe("/design/design.html");
+            expect($route.current.loadedTemplateUrl).toBe("/components/design/design.html");
 
         }));
     });
@@ -36,7 +36,7 @@ describe("dhApp", function() {
     describe("/codefile", function() {
         it('should load the template and controller',
         inject(function($location, $rootScope, $httpBackend, $route) {
-            $httpBackend.whenGET('/codefile/codefile.html').respond('...');
+            $httpBackend.whenGET('/components/codefile/codefile.html').respond('...');
             $httpBackend.expectGET('/codefile').respond({});
 
             $rootScope.$apply(function() {
@@ -44,7 +44,7 @@ describe("dhApp", function() {
             });
             
             expect($route.current.controller).toBe("CodefileCtrl as cc");
-            expect($route.current.loadedTemplateUrl).toBe("/codefile/codefile.html");
+            expect($route.current.loadedTemplateUrl).toBe("/components/codefile/codefile.html");
 
         }));
     });

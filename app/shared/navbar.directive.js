@@ -1,3 +1,5 @@
+var app = angular.module('dhApp');
+
 app.directive('navBar', function() {
     return {
         restrict: 'E',

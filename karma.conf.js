@@ -23,14 +23,14 @@ module.exports = function(config) {
     './app/bower_components/angular-strap/dist/angular-strap.tpl.js',
     './app/bower_components/angular-animate/angular-animate.js',
     './app/bower_components/ngjs-color-picker/js/ngjs-color-picker.js',
-    './app/home/*.js',
-    './app/codefile/*.js',
-    './app/design/*.js',
-    './app/user/*.js',
+    './app/components/home/*.js',
+    './app/components/codefile/*.js',
+    './app/components/design/*.js',
+    './app/components/user/*.js',
     './app/*.js',
     './app/test/*.js',
-    './app/home/*.html',
-    './app/design/*.html',
+    './app/components/home/*.html',
+    './app/components/design/*.html',
     ],
 
     // list of files to exclude
@@ -41,12 +41,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'app/design/*.html': ['ng-html2js']
+        'app/components/design/*.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
         // strip app from the file path
-        stripPrefix: 'app/design/'
+        stripPrefix: 'app/components/design/'
     },
 
     // test results reporter to use
