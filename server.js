@@ -7,7 +7,7 @@ var app = express();
 //Set default NODE_ENV and MONGO LINK 
 if (!process.env.NODE_ENV) { 
     process.env.NODE_ENV = 'development';
-    process.env.MONGODB_NW = 'mongodb://nicolechie:taioRu26@ds017584.mlab.com:17584/shopping-list';
+    process.env.MONGODB_NW = 'mongodb://nicolechie:rukka2016@ds017584.mlab.com:17584/shopping-list';
 }
 
 app.use(express.static(__dirname + '/app'));
